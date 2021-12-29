@@ -10,7 +10,7 @@ public class FacialRecog {
     protected int absoluteFaceSize = 0;
     //Model from OpenCV project
     private CascadeClassifier faceCascade = new CascadeClassifier("src/facerecognition/model.xml");
-    MatOfRect faces = new MatOfRect();
+    private MatOfRect faces = new MatOfRect();
     public static Mat main(Mat frame, String filePath) {
         FacialRecog fr = new FacialRecog();
         return fr.process(frame, filePath);

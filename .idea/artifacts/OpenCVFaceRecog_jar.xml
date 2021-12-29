@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OpenCVFaceRecog:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OpenCVFaceRecog_jar</output-path>
+    <root id="archive" name="OpenCVFaceRecog.jar">
+      <element id="module-output" name="OpenCVFaceRecog" />
+      <element id="extracted-dir" path="G:/opencv/opencv/build/java/opencv-454.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

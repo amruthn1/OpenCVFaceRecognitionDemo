@@ -12,7 +12,7 @@
       <ButtonBar layoutX="143.0" layoutY="180.0" prefHeight="40.0" prefWidth="200.0" />
     <Button fx:id="button" layoutX="274.0" layoutY="346.0" mnemonicParsing="false" onAction="#startcam" text="Start" />
       <ImageView fx:id="usercam" fitHeight="267.0" fitWidth="411.0" layoutX="61.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
-      <CheckBox id="imgoverlay" fx:id="imgoverlaycheckbox" layoutX="472.0" layoutY="58.0" mnemonicParsing="false" onAction="#imgoverlay" text="Image Overlay" />
-      <TextField fx:id="fps" alignment="TOP_CENTER" layoutX="226.0" layoutY="14.0" text="FPS: 0" />
+      <CheckBox id="imgoverlay" fx:id="imgoverlaycheckbox" layoutX="458.0" layoutY="58.0" mnemonicParsing="false" onAction="#imgoverlay" text="Image Overlay" />
+      <TextField fx:id="fpsCounter" alignment="CENTER" layoutX="225.0" layoutY="24.0" text="FPS:" />
    </children>
 </Pane>

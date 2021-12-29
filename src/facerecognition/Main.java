@@ -19,13 +19,12 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws IOException {
+        System.out.println("OpenCV Version: " + Core.VERSION);
         FXMLLoader loader = new FXMLLoader();
         String fxmlPath = "src/facerecognition/facerecognition.fxml";
         FileInputStream fxmlFIStream = new FileInputStream(fxmlPath);
         Pane main = (Pane) loader.load(fxmlFIStream);
         Scene scene = new Scene(main);
-        //Camera ucam = new PerspectiveCamera(true);
-        //scene.setCamera(ucam);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Face Recognition");
         primaryStage.show();

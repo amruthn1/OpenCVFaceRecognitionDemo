@@ -1,8 +1,8 @@
 package facerecognition;
 
 import facerecognition.utils.Utils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -21,14 +21,13 @@ public class Controller {
     @FXML
     private TextField fpsCounter = new TextField();
     @FXML
-    private Button button;
-    @FXML
     private ImageView usercam;
     private boolean isActive = false;
     private boolean shouldOverlay = false;
     private VideoCapture uCam = new VideoCapture();
     private ScheduledExecutorService timer;
     private String filePath;
+    int ftime;
     FileChooser fileChooser = new FileChooser();
     @FXML
     private CheckBox imgoverlaycheckbox = new CheckBox();
@@ -51,12 +50,15 @@ public class Controller {
             filePath = "null";
         }
         if (!isActive) {
+            System.out.println("Starting camera....");
             uCam.open(0);
             if (uCam.isOpened()){
                 this.isActive = true;
+                System.out.println("Starting model....");
                 Runnable getFrames = new Runnable() {
                     @Override
                     public void run() {
+                        double stime = ((double) System.nanoTime());
                         Mat frame = new Mat();
                         try {
                             uCam.read(frame);
@@ -65,6 +67,14 @@ public class Controller {
                         }
                         Image img = Utils.mat2Image(FacialRecog.main(frame, filePath)); //frame
                         Utils.onFXThread(usercam.imageProperty(), img);
+                        double etime = ((double) System.nanoTime());
+                        ftime = (int) (1/((etime-stime)/1_000_000_000));
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                fpsCounter.setText("FPS: " + Double.toString(ftime));
+                            }
+                        });
                     }
                 };
                 this.timer = Executors.newSingleThreadScheduledExecutor();
